@@ -1,0 +1,34 @@
+
+<div class="container text-center"
+	ng-controller="BlogController as bctrl">
+
+
+	<div class="row row-content">
+		<div class="col-xs-12">
+			<ul class="media-list tab-pane fade in active">
+				<li class="media" ng-repeat="bo in blogs | filter:filtText">
+					<div class="media-left media-middle">
+						<img class="media-object img-thumbnail"
+							ng-src='https://lh3.googleusercontent.com/-ojLI116-Mxk/WM1ZIwdnuwI/AAAAAAAADeo/4K6VpwIPSfgsmlXJB5o0N8scuI3iW4OpwCJoC/w424-h318-n-rw/thumbnail6.jpg'
+							alt="Blog Image"> </a>
+					</div>
+					<div class="media-body"
+						style="width: 10000px; border: 5px solid; border-color: darkgray;">
+						<h2 class="media-heading">
+							{{bo.title}} <span class="label label-danger">{{bo.blogDate}}</span>
+							<span class="badge">{{bo.noOfViews}}</span>
+						</h2>
+
+						<hr style="width: 531px;">
+						<!-- <a href="" ng-click="getBlog(blog.blogId)">Read More..</a> -->
+						
+						<a href="" ng-click='getBlog(bo.id)'>Read More..</a>
+
+					</div>
+
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
