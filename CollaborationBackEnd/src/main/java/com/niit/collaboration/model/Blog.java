@@ -26,7 +26,7 @@ public class Blog extends BaseDomain{
 	@Transient
 	private Date dateTime;
 	
-	private char status;
+	private String status;
 	
 	private String reason;
 
@@ -70,11 +70,11 @@ public class Blog extends BaseDomain{
 		this.dateTime = dateTime;
 	}
 
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

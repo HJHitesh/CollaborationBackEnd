@@ -28,12 +28,15 @@ public class BlogDAOImpl implements BlogDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public boolean saveOrupdate(Blog blog) {
+	public boolean save(Blog blog) {
 		log.debug("Starting of the Save Method");
 
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(blog);
-			log.info("id" + blog.getId());
+			
+			
+			blog.setId(getMaxId() + 1);
+			sessionFactory.getCurrentSession().save(blog);
+			
 			log.info("name" + blog.getTitle());
 			log.info("address" + blog.getUserID());
 			log.info("id" + blog.getDescription());
@@ -41,10 +44,20 @@ public class BlogDAOImpl implements BlogDAO {
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
-			log.debug("Starting of the Save Method");
+			log.debug("Ending of the Save Method");
 			return false;
 		}
 
+	}
+	
+	public boolean update(Blog blog) {
+		try {
+			sessionFactory.getCurrentSession().update(blog);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public boolean deleteById(String id) {
@@ -86,7 +99,15 @@ public class BlogDAOImpl implements BlogDAO {
 
 	public List<Blog> list() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from Blog").list();
+		return sessionFactory.getCurrentSession().createQuery("from Blog where status='Y' ").list();
+		
+		
+		
+	}
+	
+	public List<Blog> listPending() {
+		
+		return sessionFactory.getCurrentSession().createQuery("from Blog where status='N' ").list();
 		
 		
 		
@@ -103,6 +124,36 @@ public class BlogDAOImpl implements BlogDAO {
 
 		return (Blog) query.setString(0, name).uniqueResult();
 
+	}
+	private Integer getMaxId() {
+		log.debug("->->Starting of the method getMaxId");
+
+		String hql = "select max(id) from Blog";
+		Query query = sessionFactory.openSession().createQuery(hql);
+		Integer maxID;
+		try {
+			maxID = (Integer) query.uniqueResult();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 100;
+		}
+		log.debug("Max id :" + maxID);
+		return maxID;
+
+	}
+
+	public boolean deletebyBlog(String id) {
+		try {
+			sessionFactory.getCurrentSession().delete((id));
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		 
+		
 	}
 
 	

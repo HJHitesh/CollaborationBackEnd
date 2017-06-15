@@ -17,7 +17,7 @@ import oracle.sql.BLOB;
 public class Event extends  BaseDomain{
 	
 	@Id
-	private String id;
+	private int id;
 	
 	@Column
 	private String name;
@@ -27,17 +27,17 @@ public class Event extends  BaseDomain{
 	@Column(name="description")
 	private String Description;
 	
-	@Column(name="date_time")
-	private Date DateTime;
-	
+	@Column(name="EVENTDATE")
+	private String eventDate;
+
 	private BLOB image;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(int i) {
+		this.id = i;
 	}
 
 	public String getName() {
@@ -63,13 +63,18 @@ public class Event extends  BaseDomain{
 	public void setDescription(String description) {
 		Description = description;
 	}
+	
+	
+	
 
-	public Date getDateTime() {
-		return DateTime;
+	
+
+	public String getEventDate() {
+		return eventDate;
 	}
 
-	public void setDateTime(Date date) {
-		DateTime = date;
+	public void setEventDate(String eventDate) {
+		this.eventDate = eventDate;
 	}
 
 	public BLOB getImage() {

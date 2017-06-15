@@ -8,7 +8,7 @@ public interface JobDAO {
 	
 	public Job getJobById(String id);
 	
-	public Job getJobByName(String name);
+	/*public Job getJobByName(String name);*/
 	
 	public boolean saveOrupdate(Job job);
 	

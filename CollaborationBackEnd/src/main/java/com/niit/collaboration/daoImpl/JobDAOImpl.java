@@ -93,12 +93,12 @@ public class JobDAOImpl implements JobDAO {
 		return (Job) query.setString(0, id).uniqueResult();
 	}
 
-	public Job getJobByName(String name) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Job where name=?");
-
-		return (Job) query.setString(0, name).uniqueResult();
-
-	}
+//	public Job getJobByName(String name) {
+//		Query query = sessionFactory.getCurrentSession().createQuery("from Job where name=?");
+//
+//		return (Job) query.setString(0, name).uniqueResult();
+//
+//	}
 
 	
 	

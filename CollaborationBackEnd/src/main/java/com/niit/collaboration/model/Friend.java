@@ -4,6 +4,77 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name="C_FRIEND")
+@Component
+public class Friend extends  BaseDomain {
+	
+	@Id
+	private long id ;
+	
+	@Column(name="friend_id")
+	private String friendId ;
+	
+	@Column(name="user_id")
+	private String userId ;
+	
+	private String status ;
+	
+	@Column(name="is_online")
+	private char isOnline ;
+	
+	@Column(name="last_time_seen")
+	private Date time;
+
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getFriendId() {
+		return friendId;
+	}
+	public void setFriendId(String friendId) {
+		this.friendId = friendId;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public char getIsOnline() {
+		return isOnline;
+	}
+	public void setIsOnline(char isOnline) {
+		this.isOnline = isOnline;
+	}
+	
+	
+
+}
+
+/*import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,7 +86,7 @@ import org.springframework.stereotype.Component;
 public class Friend extends  BaseDomain {
 	
 	@Id
-	private String id;
+	private int id;
 	
 	@Column(name="user_id")
 	private String userID;
@@ -26,16 +97,16 @@ public class Friend extends  BaseDomain {
 	private String status;
 	
 	@Column(name="is_online")
-	private char isOnline;
+	private String isOnline;
 	
 	@Column(name="last_time_seen")
 	private Date time;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -63,11 +134,11 @@ public class Friend extends  BaseDomain {
 		this.status = status;
 	}
 
-	public char getIsOnline() {
+	public String getIsOnline() {
 		return isOnline;
 	}
 
-	public void setIsOnline(char isOnline) {
+	public void setIsOnline(String isOnline) {
 		this.isOnline = isOnline;
 	}
 
@@ -80,4 +151,4 @@ public class Friend extends  BaseDomain {
 	}
 	
 	
-}
+}*/

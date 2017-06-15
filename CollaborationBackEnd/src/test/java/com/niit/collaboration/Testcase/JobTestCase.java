@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.niit.collaboration.dao.BlogDAO;
+import com.niit.collaboration.dao.JobDAO;
 
-import com.niit.collaboration.model.Blog;
+import com.niit.collaboration.model.Job;
 
 public class JobTestCase {
 
@@ -17,10 +17,10 @@ public class JobTestCase {
 	private static AnnotationConfigApplicationContext context;
 
 	@Autowired
-	private static Blog blog;
+	private static Job job;
 
 	@Autowired
-	private static BlogDAO blogDAO;
+	private static JobDAO jobDAO;
 
 	@BeforeClass
 	public static void inti() {
@@ -31,22 +31,17 @@ public class JobTestCase {
 
 		context.refresh();
 
-		blog = (Blog) context.getBean("blog");
+		job = (Job) context.getBean("job");
 
-		blogDAO = (BlogDAO) context.getBean("blogDAO");
+		jobDAO = (JobDAO) context.getBean("jobDAO");
 
 	}
 
-	// @Test
+	@Test
 	public void CreateTestCase() {
-		blog.setId(01);
-		blog.setTitle("This is the blog android ");
-		blog.setDescription("This is the desciption of bolg");
-		blog.setUserID("niit");
-		blog.setStatus('A');// accept reject New
-		blog.setReason("kjdkjhfhdfdhfhdfh");
-
-		boolean flag = blogDAO.saveOrupdate(blog);
+		job.setId("job01");
+		job.setTitle("this is job for TPO");
+		boolean flag = jobDAO.saveOrupdate(job);
 
 		assertEquals("CreateTestCase", true, flag);
 	}
@@ -54,7 +49,7 @@ public class JobTestCase {
 	// @Test
 	public void deleteByIdTestCase() {
 
-		boolean flag = blogDAO.deleteById("1");
+		boolean flag = jobDAO.deleteById("1");
 
 		assertEquals("deleteByIdTestCase", true, flag);
 
@@ -63,17 +58,17 @@ public class JobTestCase {
 	/*//@Test
 	public void deleteByNameTestCase() {
 
-		boolean flag = blogDAO.deleteById("niit");
+		boolean flag = jobDAO.deleteById("niit");
 
 		assertEquals("deleteByIdTestCase", true, flag);
 
 	}*/
 
 	 //@Test
-	public void deletebyBlogTestCase() {
+	public void deletebyJobTestCase() {
 
-		blog.setId(82);
-		boolean flag = blogDAO.deletebyBlog(blog);
+		
+		boolean flag = jobDAO.deleteById("job01");
 
 		assertEquals("deleteByIdTestCase", true,flag);
 
@@ -82,20 +77,20 @@ public class JobTestCase {
 	//@Test
 	public void ListTestCase(){
 		
-		int size = blogDAO.list().size();
+		int size = jobDAO.list().size();
 		
 		assertEquals("ListTestCase",1,size);
 	}
 	
-	@Test
-	public void getBlogByNameTestCase()
+	//@Test
+	/*public void getJobByNameTestCase()
 	{
 		
-		blog =  blogDAO.getBlogByName("sdsds");
+		job =  jobDAO.getJobByName("sdsds");
 		
-		assertEquals(" getBlogByNameTestCase",null,blog);
+		assertEquals(" getJobByNameTestCase",null,job);
 		
 	}
 	
-
+*/
 }

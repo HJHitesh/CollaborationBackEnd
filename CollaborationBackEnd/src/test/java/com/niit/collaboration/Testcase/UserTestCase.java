@@ -41,7 +41,7 @@ public static void inti(){
 	
 }
 
-@Test
+//@Test
 public void CreateTestCase(){
 	
 	user.setId("niithhhh");
@@ -77,7 +77,7 @@ public void UpdateTestCase(){
 }
 
 //@Test
-public void ValidateTestcase()
+/*public void ValidateTestcase()
 {
 
 	
@@ -86,7 +86,7 @@ public void ValidateTestcase()
 	assertEquals("ValidateTestcase",true,flag);
 	
 	
-}
+}*/
 
 //@Test
 public void ListTestCase(){
@@ -105,9 +105,22 @@ public void getUserTestcase(){
 	
 }
 
-
-
-
+/*//@Test
+public void IsOnlineTestCase(){
+	
+	boolean flag=userDAO.setOnline("niit");
+	
+	assertEquals("IsOnlineTestCase",true,flag);
+}
+*/
+/*@Test
+public void IsOfflineTestCase(){
+	
+	boolean flag=userDAO.setoffline("hitu");
+	
+	assertEquals("IsOfflineTestCase",true,flag);
+}
+*/
 
 
 	

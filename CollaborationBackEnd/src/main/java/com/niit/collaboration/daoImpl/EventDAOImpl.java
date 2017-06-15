@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.collaboration.dao.EventDAO;
+import com.niit.collaboration.model.Blog;
 import com.niit.collaboration.model.Event;
 
 @Repository("eventDAO")
@@ -28,10 +29,11 @@ public class EventDAOImpl implements EventDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public boolean saveOrupdate(Event event) {
+	public boolean save(Event event) {
 		log.debug("Starting of the Save Method");
 
 		try {
+			event.setId(getMaxId() + 1);
 			sessionFactory.getCurrentSession().saveOrUpdate(event);
 			return true;
 		} catch (HibernateException e) {
@@ -40,6 +42,15 @@ public class EventDAOImpl implements EventDAO {
 			return false;
 		}
 
+	}
+	public boolean update(Event event) {
+		try {
+			sessionFactory.getCurrentSession().update(event);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public boolean deleteById(String id) {
@@ -99,6 +110,26 @@ public class EventDAOImpl implements EventDAO {
 		return (Event) query.setString(0, name).uniqueResult();
 
 	}
+	
+	private int getMaxId() {
+		log.debug("->->Starting of the method getMaxId");
+
+		String hql = "select max(id) from Event";
+		Query query = sessionFactory.openSession().createQuery(hql);
+		Integer maxID;
+		try {
+			maxID =   (Integer) query.uniqueResult();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 100;
+		}
+		log.debug("Max id :" + maxID);
+		return maxID;
+
+	}
+	
 
 	
 	

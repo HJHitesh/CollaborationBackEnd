@@ -43,13 +43,13 @@ public class EventTestCase {
 	public void CreateTestCase() {
 		
 		 
-		event.setId("Event02");
-		event.setName("Android");
-		event.setVenue("Andheri");
-		event.setDescription("This the event that has been conducted by the honda");
-		event.setDateTime(new Date());
 		
-		boolean flag = eventDAO.saveOrupdate(event);
+		event.setName("Android");
+		event.setVenue("Andhri");
+		event.setDescription("This the event that has been conducted by the honda");
+		event.setEventDate("10 june");
+		
+		boolean flag = eventDAO.save(event);
 
 		assertEquals("CreateTestCase", true, flag);
 	}

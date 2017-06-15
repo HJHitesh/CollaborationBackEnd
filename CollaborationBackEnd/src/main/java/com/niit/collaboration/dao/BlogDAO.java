@@ -10,15 +10,22 @@ public interface BlogDAO {
 	
 	public Blog getBlogByName(String name);
 	
-	public boolean saveOrupdate(Blog blog);
+	public boolean save(Blog blog);
+	
+	public boolean update(Blog blog);
 	
 	public boolean deleteById(String id);
 	
-	public boolean deletebyBlog(Blog blog);
+	public boolean deletebyBlog(String id);
 	
 	public boolean deleteByName(String name);
 	
 	public List<Blog> list();
+	
+	
+	public List<Blog> listPending();
+	
+	
 	
 	
 

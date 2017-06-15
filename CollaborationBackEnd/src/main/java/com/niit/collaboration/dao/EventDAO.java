@@ -12,7 +12,9 @@ public interface EventDAO {
 	
 	public Event getEventByName(String name);
 	
-	public boolean saveOrupdate(Event event);
+	public boolean save(Event event);
+	
+	public boolean update(Event event);
 	
 	public boolean deleteById(String id);
 	

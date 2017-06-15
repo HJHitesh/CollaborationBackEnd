@@ -17,16 +17,18 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.collaboration.model.Blog;
+import com.niit.collaboration.model.BlogComment;
 import com.niit.collaboration.model.Chat;
 import com.niit.collaboration.model.ChatForum;
 import com.niit.collaboration.model.Event;
+import com.niit.collaboration.model.Friend;
 import com.niit.collaboration.model.Job;
 import com.niit.collaboration.model.User;
 
 
 
 @Configuration
-@ComponentScan("com.niit")
+@ComponentScan("com.niit.collaboration")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 	private static final Logger logger = LoggerFactory.getLogger(ApplicationContextConfig.class);
@@ -72,10 +74,14 @@ public class ApplicationContextConfig {
 
 		sessionBuilder.addAnnotatedClass(Job.class);
 		
-
+		sessionBuilder.addAnnotatedClass(Friend.class);
+		
 		sessionBuilder.addAnnotatedClass(Chat.class);
 		
 		sessionBuilder.addAnnotatedClass(ChatForum.class);
+		
+		sessionBuilder.addAnnotatedClass(BlogComment.class);
+		
 
 		
 		logger.debug("Ending of the method getSessionFactory");
